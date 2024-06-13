@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
-    <body>
+    <head>
+        <title>Japan Auto</title>
+
+    </head>
+    <body>   
         <?php
         use \App\Models\Manufacturer;
         $manufacturers = Manufacturer::all();

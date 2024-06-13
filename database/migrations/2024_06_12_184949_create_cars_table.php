@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('model');
             $table->string('year');
             $table->string('salesperson_email');
-            $table->bigInteger('manufacturer_id')->unsigned()->nullable();
+            $table->bigInteger('manufacturer_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('manufacturer_id')->references('id')->on('manufacturers');
