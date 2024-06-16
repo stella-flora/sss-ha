@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card" style="background-color: lemonchiffon;">
-        <div class="card-header" style="background-color: #BC002D; color: goldenrod;">
+        <div class="card-header" style="background-color: #8d0122; color: goldenrod;">
             Car Details: {{$car->id}}
         </div>
         <div class="card-body">
@@ -27,10 +27,27 @@
                 <div class="col"></div>
                 <div class="col">
                     <button type="button" class="btn btn-warning btn-sm"> Edit </button>
-                    <button type="button" class="btn btn-danger btn-sm"> Delete </button>
+                    <button
+                        onclick="deleteCar2('{{$car->id}}')"
+                        type="button" class="btn btn-danger btn-sm">Delete
+                    </button>
                 </div>
             </div>   
         </div>
     </div>
 @endsection
+
+<script>
+    function deleteCar2(id) {
+        axios('/api/car/' + id + "/del", {
+            method: "post"
+        }).then(() => {
+            document.getElementById(id).remove();
+        }).catch(e => {
+
+        }).finally(() => {
+
+        });
+    }
+</script>
 

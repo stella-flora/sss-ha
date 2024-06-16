@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::delete('/car/{car}', [CarsController::class,'delete']);
+Route::post('/car/{car}/del', [CarsController::class, 'del']);
+
+

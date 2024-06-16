@@ -31,17 +31,33 @@
                         class="btn btn-warning btn-default btn-sm">
                         Edit
                      </a>
-                     <a href="/delete/{{$car->id}}"
-                        class="btn btn-danger btn-default btn-sm">
-                        Delete
-                     </a>
-                     {{-- <button
+                     <button
                         onclick="deleteCar('{{$car->id}}')"
                         type="button" class="btn btn-danger btn-sm">Delete
-                    </button> --}}
+                    </button>
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
 @endsection
+
+
+<script>
+    function deleteCar(id) {
+        axios('/api/car/' + id, {
+            method: "DELETE"
+        }).then(() => {
+            document.getElementById(id).remove();
+        }).catch(e => {
+
+        }).finally(() => {
+
+        });
+    }
+</script>
+
+
+
+
+
