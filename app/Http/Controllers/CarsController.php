@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CarCreateRequest;
 use App\Http\Requests\CarEditRequest;
 use Illuminate\Http\Request;
 use App\Models\Car;
@@ -9,22 +10,36 @@ use App\Models\Manufacturer;
 
 class CarsController extends Controller
 {
-    public function index()
+    
+
+    public function create()
     {
-        $cars = Car::all();
         $manufacturers = Manufacturer::all();
 
-        return view('cars', [
-                                        'cars' => $cars,
-                                        'manufacturers' => $manufacturers
-                                    ]);
+        return view('create', ['manufacturers' => $manufacturers , 'success' => false]);
     }
 
+    public function store(CarCreateRequest $request, Car $car)
+    {
+        $car = new Car([
+            $car->model = $request->input('model'),
+            $car->year = $request->input('year'),
+            $car->salesperson_email = $request->input('salespersonemail'),
+            $car->manufacturer_id = $request->input('manufacturer'),
+        ]);
+        
+
+        $car->save();
+
+        $manufacturers = Manufacturer::all();
+
+        return view('create', ['manufacturers'=> $manufacturers, 'success' => true]);
+    }
 
     public function edit(Car $car) {
 
         $manufacturers = Manufacturer::all();
-        return view('editc', ['car'=> $car, 'manufacturers'=> $manufacturers, 'success' => false]);
+        return view('edit', ['car'=> $car, 'manufacturers'=> $manufacturers, 'success' => false]);
 
     }
 
@@ -41,7 +56,7 @@ class CarsController extends Controller
 
         $manufacturers = Manufacturer::all();
 
-        return view('editc', ['car'=> $car, 'manufacturers'=> $manufacturers, 'success' => true]);
+        return view('edit', ['car'=> $car, 'manufacturers'=> $manufacturers, 'success' => true]);
     }
 
     public function show(Car $car)
@@ -65,9 +80,22 @@ class CarsController extends Controller
         $car->delete();
 
         //redirect to home page / cars table
-        return redirect("/");
+
+        return view('/');
+        // return redirect("/");
 
        //return response()->noContent(); // returns 204
+    }
+
+    public function index()
+    {
+        $cars = Car::all();
+        $manufacturers = Manufacturer::all();
+
+        return view('cars', [
+                                        'cars' => $cars,
+                                        'manufacturers' => $manufacturers
+                                    ]);
     }
 
 

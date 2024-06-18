@@ -1,7 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2 style="color: goldenrod">CARS</h2>
+    
+
+    <div class="container mb2">
+    <div class="row">
+         <div class="col col-12 col-md-6 col-lg-4 mb-3">
+            <h2 style="color: goldenrod">CARS</h2>
+         </div>
+         <div class="col col-12 col-md-6 col-lg-4 mb-3">
+            <input type="search" name="search" class="form-control" id="search" placeholder="Search: Mazda...">
+         </div>
+         <div class="col col-12 col-md-6 col-lg-4 mb-3 text-right">
+            <a href="/cars/create"
+            class="btn btn-success btn-default btn-md">
+            Add New
+            </a>
+         </div>
+    </div>
+    </div>
 
     <table class="table">
         <thead>

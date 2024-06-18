@@ -8,7 +8,7 @@
             @csrf
             <div class="col col-12 col-md-6 col-lg-4 mb-3">
                     <label for="model" class="form-label">Model</label>
-                    <input type="text" name="model" class="form-control @error('model') is-invalid @enderror" id="model" placeholder="Model" value="{{$car->model}}">
+                    <input type="text" name="model" class="form-control @error('model') is-invalid @enderror" id="model" placeholder="Yaris" value="{{$car->model}}">
                     @error('model')
                         <span class="invalid-feedback">
                             {{$message}}
@@ -26,7 +26,7 @@
             </div>
             <div class="col col-12 col-md-6 col-lg-4 mb-3">
                 <label for="salespersonemail" class="form-label">Sales Person Email</label>
-                <input type="email" name="salespersonemail" class="form-control @error('salespersonemail') is-invalid @enderror" id="salespersonemail" placeholder="john@japanauto.com" value="{{$car->salesperson_email}}">
+                <input type="email" name="salespersonemail" class="form-control @error('salespersonemail') is-invalid @enderror" id="salespersonemail" placeholder="joe@japanauto.com" value="{{$car->salesperson_email}}">
                 @error('salespersonemail')
                     <span class="invalid-feedback">
                         {{$message}}

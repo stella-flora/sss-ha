@@ -32,8 +32,8 @@
                      </a>
                     {{-- <button type="button" class="btn btn-warning btn-sm"> Edit </button> --}}
                     <button
-                    {{-- onclick="delCar('{{$car->id}}')" --}}
-                        onclick="deleteCar('{{$car->id}}')"
+                        onclick="delCar('{{$car->id}}')"
+                        {{-- onclick="deleteCar('{{$car->id}}')" --}}
                         type="button" class="btn btn-danger btn-sm">Delete
                     </button>
                 </div>
@@ -42,10 +42,10 @@
     </div>
 @endsection
 
-{{-- <script>
+<script>
     function delCar(id) {
         axios('/api/cars/' + id + "/del", {
-            method: "post"
+            method: "put"
         }).then(() => {
             document.getElementById(id).remove();
         }).catch(e => {
@@ -54,9 +54,9 @@
 
         });
     }
-</script> --}}
+</script>
 
-<script>
+{{-- <script>
     function deleteCar(id) {
         axios('/api/cars/' + id, {
             method: "DELETE"
@@ -68,5 +68,5 @@
 
         });
     }
-</script>
+</script> --}}
 
