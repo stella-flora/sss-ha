@@ -23,11 +23,11 @@
                 <td>{{$car->year}}</td>
                 <td>{{$car->salesperson_email}}</td>
                 <td>
-                    <a href="/car/{{$car->id}}"
+                    <a href="/cars/{{$car->id}}"
                         class="btn btn-info btn-default btn-sm">
                         View
                      </a>
-                     <a href="/edit/{{$car->id}}"
+                     <a href="/cars/{{$car->id}}/edit"
                         class="btn btn-warning btn-default btn-sm">
                         Edit
                      </a>
@@ -45,7 +45,7 @@
 
 <script>
     function deleteCar(id) {
-        axios('/api/car/' + id, {
+        axios('/api/cars/' + id, {
             method: "DELETE"
         }).then(() => {
             document.getElementById(id).remove();

@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::delete('/car/{car}', [CarsController::class,'delete']);
-Route::post('/car/{car}/del', [CarsController::class, 'del']);
+Route::delete('/cars/{car}', [CarsController::class,'delete']);
+Route::put('/cars/{car}/del', [CarsController::class, 'del']);
 
 

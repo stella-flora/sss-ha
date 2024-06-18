@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CarEditRequest;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Manufacturer;
@@ -19,6 +20,29 @@ class CarsController extends Controller
                                     ]);
     }
 
+
+    public function edit(Car $car) {
+
+        $manufacturers = Manufacturer::all();
+        return view('editc', ['car'=> $car, 'manufacturers'=> $manufacturers, 'success' => false]);
+
+    }
+
+    public function update(CarEditRequest $request, Car $car)
+    {
+        // $manufacturers = Manufacturer::all();
+
+        $car->model = $request->input('model');
+        $car->year = $request->input('year');
+        $car->salesperson_email = $request->input('salespersonemail');
+        $car->manufacturer_id = $request->input('manufacturer');
+
+        $car->save();
+
+        $manufacturers = Manufacturer::all();
+
+        return view('editc', ['car'=> $car, 'manufacturers'=> $manufacturers, 'success' => true]);
+    }
 
     public function show(Car $car)
     {

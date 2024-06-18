@@ -26,9 +26,14 @@
             <div class="row justify-content-center">
                 <div class="col"></div>
                 <div class="col">
-                    <button type="button" class="btn btn-warning btn-sm"> Edit </button>
+                    <a href="/cars/{{$car->id}}/edit"
+                        class="btn btn-warning btn-default btn-sm">
+                        Edit
+                     </a>
+                    {{-- <button type="button" class="btn btn-warning btn-sm"> Edit </button> --}}
                     <button
-                        onclick="deleteCar2('{{$car->id}}')"
+                    {{-- onclick="delCar('{{$car->id}}')" --}}
+                        onclick="deleteCar('{{$car->id}}')"
                         type="button" class="btn btn-danger btn-sm">Delete
                     </button>
                 </div>
@@ -37,10 +42,24 @@
     </div>
 @endsection
 
-<script>
-    function deleteCar2(id) {
-        axios('/api/car/' + id + "/del", {
+{{-- <script>
+    function delCar(id) {
+        axios('/api/cars/' + id + "/del", {
             method: "post"
+        }).then(() => {
+            document.getElementById(id).remove();
+        }).catch(e => {
+
+        }).finally(() => {
+
+        });
+    }
+</script> --}}
+
+<script>
+    function deleteCar(id) {
+        axios('/api/cars/' + id, {
+            method: "DELETE"
         }).then(() => {
             document.getElementById(id).remove();
         }).catch(e => {
