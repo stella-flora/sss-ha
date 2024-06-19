@@ -20,6 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::delete('/cars/{car}', [CarsController::class,'delete']);
-Route::put('/cars/{car}/del', [CarsController::class, 'del']);
+// Route::put('/cars/{car}/del', [CarsController::class, 'del']);
 
 

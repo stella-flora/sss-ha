@@ -80,9 +80,9 @@ class CarsController extends Controller
         $car->delete();
 
         //redirect to home page / cars table
-        return redirect("/");
+        //return redirect("/");
         //return view('/');
-        //return response()->noContent(); // returns 204
+        return response()->noContent(); // returns 204
     }
 
 
