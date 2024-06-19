@@ -38,9 +38,7 @@
                         id="manufacturer">
                     <option value="0">Select Manufacturer</option>
                     @foreach($manufacturers as $manufacturer)
-                        <option value="{{$manufacturer->id}}"
-                            {{$manufacturer->id === $car->manufacturer_id ? 'selected' : ''}}
-                        >{{$manufacturer->name}}</option>
+                        <option value="{{$manufacturer->id}}">{{$manufacturer->name}}</option>
                     @endforeach
                 </select>
                 @error('manufacturer')

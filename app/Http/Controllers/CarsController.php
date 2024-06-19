@@ -20,17 +20,17 @@ class CarsController extends Controller
 
     public function store(CarCreateRequest $request, Car $car)
     {
-        $car = new Car([
-            $car->model = $request->input('model'),
-            $car->year = $request->input('year'),
-            $car->salesperson_email = $request->input('salespersonemail'),
-            $car->manufacturer_id = $request->input('manufacturer'),
-        ]);
-        
-
-        $car->save();
 
         $manufacturers = Manufacturer::all();
+
+        $car = new Car([
+            'model' => $request->input('model'),
+            'year' => $request->input('year'),
+            'salesperson_email' => $request->input('salespersonemail'),
+            'manufacturer_id' => $request->input('manufacturer'),
+        ]);
+        
+        $car->save();
 
         return view('create', ['manufacturers'=> $manufacturers, 'success' => true]);
     }
