@@ -8,10 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Manufacturer;
 
+
 class CarsController extends Controller
 {
-    
-
     public function create()
     {
         $manufacturers = Manufacturer::all();
@@ -39,6 +38,7 @@ class CarsController extends Controller
     public function edit(Car $car) {
 
         $manufacturers = Manufacturer::all();
+
         return view('edit', ['car'=> $car, 'manufacturers'=> $manufacturers, 'success' => false]);
 
     }
@@ -80,17 +80,27 @@ class CarsController extends Controller
         $car->delete();
 
         //redirect to home page / cars table
-
-        return view('/');
-        // return redirect("/");
-
-       //return response()->noContent(); // returns 204
+        return redirect("/");
+        //return view('/');
+        //return response()->noContent(); // returns 204
     }
 
-    public function index()
+
+    public function index(Request $request)
     {
-        $cars = Car::all();
         $manufacturers = Manufacturer::all();
+
+        $cars = Car::all();
+
+        $search = $request->input('search');
+
+        if(!empty($search))
+        {
+            $cars = Car::query()
+                        ->where('model', 'LIKE', "%$search%")
+                        ->orWhere('manufacturer_id', 'LIKE', "%$search%") 
+                        ->get();
+        }
 
         return view('cars', [
                                         'cars' => $cars,

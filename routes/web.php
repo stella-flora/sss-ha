@@ -20,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [CarsController::class, 'index']);
+
 Route::get('/manufacturers', [ManufacturerController::class, 'index']);
+
 Route::get('/cars/{car}', [CarsController::class, 'show']);
 
 Route::get('/cars/{car}/edit', [CarsController::class, 'edit']);
