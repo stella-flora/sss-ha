@@ -98,7 +98,10 @@ class CarsController extends Controller
         {
             $cars = Car::query()
                         ->where('model', 'LIKE', "%$search%")
-                        ->orWhere('manufacturer_id', 'LIKE', "%$search%") 
+                        ->orWhereHas('manufacturer', function ($query) use ($search)
+                            {
+                                $query->where('name', 'LIKE', "%{$search}%");
+                            })
                         ->get();
         }
 
