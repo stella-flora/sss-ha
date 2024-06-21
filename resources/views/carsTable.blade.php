@@ -22,6 +22,7 @@
                     class="btn btn-info btn-default btn-sm">
                     View
                  </a>
+                 @auth
                  <a href="/cars/{{$car->id}}/edit"
                     class="btn btn-warning btn-default btn-sm">
                     Edit
@@ -30,6 +31,7 @@
                     onclick="deleteCar('{{$car->id}}')"
                     type="button" class="btn btn-danger btn-sm">Delete
                 </button>
+                @endauth
             </td>
         </tr>
     @endforeach

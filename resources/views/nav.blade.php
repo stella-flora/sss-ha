@@ -12,6 +12,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Cars</a>
                 </li>
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link text-warning" href="/login">Login</a>
+                    </li>
+                @endguest
+                @auth
+                    <form class="nav-item mb-0" method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button class="nav-link text-warning" type="submit">Logout</button>
+                    </form>
+                @endauth
             </ul>
         </div>
     </div>

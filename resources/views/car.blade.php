@@ -22,6 +22,7 @@
                 <div class="col">Salesperson Email:</div>
                 <div class="col">{{$car->salesperson_email}}</div>
             </div>
+            @auth
             <hr/>
             <div class="row justify-content-center">
                 <div class="col"></div>
@@ -36,7 +37,8 @@
                         type="button" class="btn btn-danger btn-sm">Delete
                     </button>
                 </div>
-            </div>   
+            </div> 
+            @endauth  
         </div>
     </div>
 @endsection

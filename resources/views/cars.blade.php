@@ -18,12 +18,14 @@
                 </div>
             </form>
         </div>
+        @auth
          <div class="col col-12 col-md-6 col-lg-4 mb-3 text-right">
             <a href="/cars/create"
             class="btn btn-success btn-md">
             Add New
             </a>
          </div>
+        @endauth
     </div>
     </div>
 
